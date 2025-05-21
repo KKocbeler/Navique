@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
 
 const quizzes = [
@@ -37,11 +37,27 @@ interface PropTypes {
 }
 
 const MobileNavMenu: React.FC<PropTypes> = ({showMobileNav, setShowMobileNav}) => {
-        const [selectedIndex, setSelectedIndex] = useState<null | number>(null)
 
-        const toggleMenu = (index: number) => {
-            setSelectedIndex(selectedIndex === index ? null : index)
+const [selectedIndex, setSelectedIndex] = useState<null | number>(null)
+
+const toggleMenu = (index: number) => {
+    setSelectedIndex(selectedIndex === index ? null : index)
+}
+
+
+useEffect(() => {
+    const handleScroll = () => {
+        if(scrollY > 0) {
+            setShowMobileNav(false)
         }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => (
+        window.removeEventListener("scroll", handleScroll)
+    )
+}, [])
         
   return (
     <div className={`fixed z-10 top-[80px] right-0 bg-stone-100 inset-0 h-[100vh] px-2 sm:hidden transition-all duration-500 ${showMobileNav ? "translate-x-0" : "translate-x-full"}`}>
