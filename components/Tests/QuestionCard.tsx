@@ -6,7 +6,7 @@ import { DataProps } from '@/types/dataType'
 interface PropsType {
     data: DataProps[];
     questionIndex: number;
-    quizTitle: any;
+    quizTitle: string | undefined;
     nextQuestion: () => void;
     chosenAnswer: string | null;
     answerCheck: (value: number, value2:string) => void;
@@ -49,7 +49,7 @@ const QuestionCard: React.FC<PropsType> = ({data, questionIndex, quizTitle, chos
         setShuffledAnswers(shuffeld)
     }, [data, questionIndex])
 
-    const decodeHTMLEntities = (text: any) => {
+    const decodeHTMLEntities = (text: string) => {
         const textarea = document.createElement("textarea");
         textarea.innerHTML = text;
 
