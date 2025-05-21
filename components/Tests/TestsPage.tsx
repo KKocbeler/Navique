@@ -94,8 +94,7 @@ const TestsPage: React.FC<PropsType>= ({category}) => {
         setChosenAnswer(null)
         setCorrectCount(0)
     }
-    console.log("category:", category);
-    console.log("quizSettings:", quizSettings);
+    
     const quizTitle = category && (category?.toString().charAt(0).toUpperCase() + category?.toString().slice(1)).replaceAll("-", " ");
 return (
     <div className='flex items-center justify-center mt-[80px] h-[90vh]'>
