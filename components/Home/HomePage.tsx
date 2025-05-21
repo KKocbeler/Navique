@@ -32,39 +32,44 @@ const entertainmentTests = [
 ];
 const HomePage = () => {
   return (
-    <div className="mt-[80px] space-y-[50px] p-12">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
-            <h2 className='text-2xl font-bold mb-4'>General Knowledge</h2>
-            <div className="flex gap-4 p-2">
+    <div className="my-[80px] space-y-[50px]">
+        <div className='flex flex-col justify-center items-center gap-3 sm:gap-5 h-[calc(100vh_-_80px)] pb-12'>
+            <div className='fade-in font-bold lg:text-4xl md:text-3xl text-3xl'>Ready to Get Quizzed?</div>
+            <div className='fade-in-late font-bold lg:text-3xl md:text-2xl'>Sharpen your mind while having fun</div>
+            <Link href={"#tests"} className='fade-in-end py-3 px-6 lg:py-4 lg:px-8 text-sm sm:text-lg bg-slate-900 hover:bg-stone-800 transition rounded-4xl text-white'>Start Now</Link>
+        </div>
+        <motion.div initial={{ opacity: 0, y: 100 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, amount: 0.5  }} viewport={{ once: true}}>
+            <h2 id='tests' className='text-xl sm:text-2xl font-bold mb-4 text-slate-900'>General Knowledge</h2>
+            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 p-2">
                 {generalKnowledge.map((item, i) => (
                     <Link
                         href={`/tests/${item.href}`}
                         key={i}
-                        className="flex-1 text-center font-semibold rounded-2xl text-white py-3 bg-gradient-to-r from-rose-500 via-rose-600 to-rose-700 shadow-md transition transform duration-300 ease-in-out hover:scale-105 hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-rose-400">
+                        className="flex-1 text-center text-stone-50 font-semibold rounded-xl bg-slate-900 py-3 shadow-md transition transform duration-300 ease-in-out hover:scale-105 hover:brightness-105 focus:outline-none focus:ring-2 focus:ring-rose-400">
                         {item.label}
                     </Link>
                 ))}
             </div>
         </motion.div>
-        <motion.div initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-            <h2 className="text-2xl font-bold text-rose-600 mb-4">Anime and Comics Quizzes 🗡️</h2>
-            <div className="grid grid-cols-3 gap-4">
+        <motion.div initial={{ opacity: 0, x: -200 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, amount: 0.5 }} viewport={{ once: true }}>
+            <h2 className="text-xl sm:text-2xl font-bold text-rose-600 mb-4">Anime and Comics Quizzes 🗡️</h2>
+            <div className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {popCultureTests.map((item, j) => (
                     <Cart key={j} type="popular" label={item.label} href={item.href} description={item.description} />
                 ))}
             </div>
         </motion.div>
-        <motion.div initial={{ opacity: 0, x: 200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-            <h2 className="text-2xl font-bold text-green-600 mb-4">Game Quizzes 🎮</h2>
-            <div className="grid grid-cols-3 gap-4">
+        <motion.div initial={{ opacity: 0, x: 200 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, amount: 0.5 }} viewport={{ once: true }}>
+            <h2 className="text-xl sm:text-2xl font-bold text-green-600 mb-4">Game Quizzes 🎮</h2>
+            <div className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {gameTests.map((item, k) => (
                     <Cart key={k} type="game" label={item.label} href={item.href} description={item.description} />
                 ))}
             </div>
         </motion.div>
-        <motion.div initial={{ opacity: 0, x: -200 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, ease: "easeOut" }}>
-            <h2 className="text-2xl font-bold text-stone-700 mb-4">Entertainment Quizzes 🎭</h2>
-            <div className="grid grid-cols-3 gap-4">
+        <motion.div initial={{ opacity: 0, x: -200 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, amount: 0.5 }} viewport={{ once: true }}>
+            <h2 className="text-xl sm:text-2xl font-bold text-stone-700 mb-4">Entertainment Quizzes 🎭</h2>
+            <div className="grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {entertainmentTests.map((item, l) => (
                     <Cart key={l} type="enterteiment" label={item.label} href={item.href} description={item.description} />
                 ))}
