@@ -1,7 +1,6 @@
 "use client"
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
 import StartQuiz from '@/components/Tests/StartQuiz';
 import Loading from '@/components/Loading/Loading';
 import QuizResults from '@/components/Tests/QuizResults';
@@ -95,11 +94,11 @@ const TestsPage: React.FC<PropsType>= ({category}) => {
         setChosenAnswer(null)
         setCorrectCount(0)
     }
-
+    console.log("category:", category);
+    console.log("quizSettings:", quizSettings);
     const quizTitle = category && (category?.toString().charAt(0).toUpperCase() + category?.toString().slice(1)).replaceAll("-", " ");
 return (
     <div className='flex items-center justify-center mt-[80px] h-[90vh]'>
-        <AnimatePresence mode='wait'>
         { 
             quizSettings ? (
                 <StartQuiz 
@@ -126,7 +125,6 @@ return (
                 <QuizResults correctCount={correctCount} qLength={qLength!} restartQuiz={restartQuiz}/>
             )
         )}
-        </AnimatePresence>
     </div>
 )
 

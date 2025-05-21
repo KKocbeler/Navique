@@ -17,8 +17,7 @@ const StartQuiz: React.FC<PropsType> = ({temporaryDifficulty, setTemporaryDiffic
     <motion.div 
     className='w-11/12 sm:w-3/4 mx-auto'
     initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    exit={{ opacity: 0, scale: 0.9 }} 
+    animate={{ opacity: 1, scale: 1 }} 
     transition={{ duration: 0.4 }}
     >
         <div className='max-w-md mx-auto py-6 px-16 bg-stone-100 rounded-xl shadow-2xl text-center space-y-4'> 

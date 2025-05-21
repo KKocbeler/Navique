@@ -37,8 +37,7 @@ const QuizResults: React.FC<PropsType> = ({correctCount, qLength, restartQuiz}) 
     <motion.div 
     className='flex justify-center'
     initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    exit={{ opacity: 0, scale: 0.9 }} 
+    animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.4 }}
     >
         <div className="max-w-md mx-auto py-6 px-12 bg-stone-100 rounded-xl shadow-md text-center space-y-4">

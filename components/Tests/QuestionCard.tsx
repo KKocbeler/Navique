@@ -51,7 +51,7 @@ const QuestionCard: React.FC<PropsType> = ({data, questionIndex, quizTitle, chos
   return (
     <motion.div 
         className="flex flex-col px-6 py-6 rounded-xl w-[800px] min-h-[385px] bg-stone-100 shadow-lg space-y-4 transition-all duration-300 relative"
-        initial={{ opacity: 0}} whileInView={{ opacity: 1}} exit={{ opacity: 0}} transition={{ duration: 0.4 }}
+        initial={{ opacity: 0}} animate={{ opacity: 1}} exit={{ opacity: 0}} transition={{ duration: 0.4 }}
     >
         <div className='text-2xl sm:text-3xl font-bold text-stone-800'>{quizTitle} Quiz</div>
         <div className="flex gap-2 sm:text-lg font-medium text-stone-700">
