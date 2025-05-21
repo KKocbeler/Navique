@@ -54,10 +54,10 @@ useEffect(() => {
 
     window.addEventListener("scroll", handleScroll);
 
-    return () => (
+    return () => {
         window.removeEventListener("scroll", handleScroll)
-    )
-}, [])
+    }
+}, [setShowMobileNav])
         
   return (
     <div className={`fixed z-10 top-[80px] right-0 bg-stone-100 inset-0 h-[100vh] px-2 sm:hidden transition-all duration-500 ${showMobileNav ? "translate-x-0" : "translate-x-full"}`}>
