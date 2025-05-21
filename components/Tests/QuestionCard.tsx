@@ -48,6 +48,13 @@ const QuestionCard: React.FC<PropsType> = ({data, questionIndex, quizTitle, chos
         const shuffeld = answers.sort(() => Math.random() - 0.5);
         setShuffledAnswers(shuffeld)
     }, [data, questionIndex])
+
+    const decodeHTMLEntities = (text: any) => {
+        const textarea = document.createElement("textarea");
+        textarea.innerHTML = text;
+
+        return textarea.value
+    }
   return (
     <motion.div 
         className="flex flex-col px-6 py-6 rounded-xl w-[800px] min-h-[385px] bg-stone-100 shadow-lg space-y-4 transition-all duration-300 relative"
@@ -57,7 +64,7 @@ const QuestionCard: React.FC<PropsType> = ({data, questionIndex, quizTitle, chos
         <div className="flex gap-2 sm:text-lg font-medium text-stone-700">
             <p>
                 <span>{`${questionIndex + 1} - `}</span>
-                {data[questionIndex].question}
+                {decodeHTMLEntities(data[questionIndex].question)}
             </p>
         </div>
         <ul className="grid gap-3">
