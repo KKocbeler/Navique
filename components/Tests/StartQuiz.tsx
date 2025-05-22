@@ -20,15 +20,15 @@ const StartQuiz: React.FC<PropsType> = ({temporaryDifficulty, setTemporaryDiffic
     animate={{ opacity: 1, scale: 1 }} 
     transition={{ duration: 0.4 }}
     >
-        <div className='max-w-md mx-auto py-6 px-16 bg-stone-100 rounded-xl shadow-2xl text-center space-y-4'> 
-        <h2 className='text-2xl font-bold text-stone-900'>Quiz Settings</h2>
+        <div className='max-w-md mx-auto py-6 px-16 bg-slate-100 dark:bg-slate-950 text-slate-950 dark:text-slate-50 rounded-xl shadow-2xl text-center space-y-4'> 
+        <h2 className='text-2xl font-bold text-slate-900 dark:text-slate-50'>Quiz Settings</h2>
         <div>
             <div className='font-bold mb-3'>Difficulty</div>
             <div className='flex justify-center items-center gap-2'>
                 {difficulties.map((item, j) => (
                     <span 
                     key={j}
-                    className={`cursor-pointer py-1 px-2 rounded transition ${item.toLowerCase() === temporaryDifficulty ? "bg-stone-700 text-white" : "hover:bg-stone-200"}`}
+                    className={`cursor-pointer py-1 px-2 rounded transition ${item.toLowerCase() === temporaryDifficulty ? "bg-slate-700 text-white" : "hover:bg-slate-200 dark:hover:bg-slate-600"}`}
                     onClick={() => setTemporaryDifficulty(item.toLowerCase())}
                     >
                     {item}
@@ -42,7 +42,7 @@ const StartQuiz: React.FC<PropsType> = ({temporaryDifficulty, setTemporaryDiffic
                 {questionOptions.map((item, j) => (
                     <span 
                     key={j}
-                    className={`cursor-pointer py-1 px-2 rounded transition ${item === temporaryQLength ? "bg-stone-700 text-white" : "hover:bg-stone-200"}`}
+                    className={`cursor-pointer py-1 px-2 rounded transition ${item === temporaryQLength ? "bg-slate-700 text-white" : "hover:bg-slate-200 dark:hover:bg-slate-600"}`}
                     onClick={() => setTemporaryQLength(item)}
                     >
                     {item}
@@ -52,7 +52,7 @@ const StartQuiz: React.FC<PropsType> = ({temporaryDifficulty, setTemporaryDiffic
         </div>
         <div className="flex justify-center gap-4 mt-8">
             <button 
-            className="bg-stone-800 hover:bg-stone-700 text-white font-medium py-2 px-4 rounded" 
+            className="bg-slate-800 hover:bg-slate-700 text-white font-medium py-2 px-4 rounded" 
             onClick={startQuiz}
             >
             Start Quiz

@@ -17,7 +17,7 @@ const Cart: React.FC<ButtonProps> = ({type, label, description, href}) => {
     const typeClasses = {
         popular: "bg-gradient-to-r from-rose-600 to-rose-500 ring-rose-300",
         game: "bg-gradient-to-r from-green-600 to-emerald-500 ring-green-300",
-        enterteiment: "bg-gradient-to-r from-stone-700 to-stone-600 ring-stone-400",
+        enterteiment: "bg-gradient-to-r from-cyan-700 to-cyan-600 ring-stone-400",
     };
 
     return (

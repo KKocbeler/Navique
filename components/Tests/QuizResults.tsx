@@ -40,12 +40,12 @@ const QuizResults: React.FC<PropsType> = ({correctCount, qLength, restartQuiz}) 
     animate={{ opacity: 1, scale: 1 }}
     transition={{ duration: 0.4 }}
     >
-        <div className="max-w-md mx-auto py-6 px-12 bg-stone-100 rounded-xl shadow-md text-center space-y-4">
-            <h2 className="text-2xl font-bold text-stone-900">🎉 Quiz Results</h2>
-            <div className="text-lg text-stone-900">
+        <div className="max-w-md mx-auto py-6 px-12 bg-slate-100 dark:bg-slate-950 rounded-xl shadow-md text-center space-y-4">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">🎉 Quiz Results</h2>
+            <div className="text-lg text-slate-900 dark:text-slate-100">
                 You answered <span className="font-semibold text-green-600">{correctCount}</span> out of <span>{qLength}</span> questions correctly
                 <br />
-                <span className="text-sm text-stone-600">({Math.round((correctCount / qLength) * 100)}%)</span>
+                <span className="text-sm text-slate-600 dark:text-slate-100">({Math.round((correctCount / qLength) * 100)}%)</span>
             </div>
             <motion.div
                 className='flex items-center justify-center rounded font-semibold'
@@ -56,8 +56,8 @@ const QuizResults: React.FC<PropsType> = ({correctCount, qLength, restartQuiz}) 
                 {resultMessage}
             </motion.div>
             <div className="flex justify-center gap-4 mt-4">
-                <button className="bg-stone-300 hover:bg-stone-200 text-stone-800 font-medium py-2 px-4 rounded" onClick={restartQuiz}>Restart Quiz</button>
-                <Link href="/" className="border border-stone-700 bg-stone-700 hover:bg-stone-600 text-gray-50 font-medium py-2 px-4 rounded">Home</Link>
+                <button className="bg-slate-200 hover:bg-slate-100 text-slate-800 font-medium py-2 px-4 rounded" onClick={restartQuiz}>Restart Quiz</button>
+                <Link href="/" className="border border-slate-700 bg-slate-700 hover:bg-slate-600 text-gray-50 font-medium py-2 px-4 rounded">Home</Link>
             </div>
         </div>
     </motion.div>

@@ -4,17 +4,32 @@ import React, { useEffect, useRef, useState } from 'react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import MobileNavMenu from './MobileNavMenu'
 import { IoCloseOutline } from 'react-icons/io5'
+import { FaMoon, FaSun } from 'react-icons/fa'
 
-    const navList = [
-        {path: "#home", name: "Home"},
-        {path: "#tests", name: "Tests"},
-        {path: "/about", name: "About"}
-    ]
+const navList = [
+    {path: "#home", name: "Home"},
+    {path: "#tests", name: "Tests"},
+    {path: "#features", name: "Features"}
+]
 
 const Navbar = () => {
     const [showNavbar, setShowNavbar] = useState(true);
     const [showMobileNav, setShowMobileNav] = useState(false)
     const lastScrollY = useRef(0)
+
+    const [theme, setTheme] = useState(() => {
+        return localStorage.getItem("theme") || "light";
+    });
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme)
+
+        document.documentElement.className = theme
+    }, [theme])
+
+    const themeToggle = () =>{
+        setTheme(prev => prev === "dark" ? "light" : "dark")
+    }
 
     useEffect(() => {
         const handleScroll = () => {
@@ -37,18 +52,26 @@ const Navbar = () => {
     }, [])
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 bg-stone-100 ${showNavbar ? "translate-y-0" : "-translate-y-full"}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 bg-slate-100 dark:bg-slate-950 ${showNavbar ? "translate-y-0" : "-translate-y-full"}`}>
         <div className="new-container">
             <div className='flex items-center justify-between h-[80px]'>
                 <div >
-                    <Link href={"/"} className="text-2xl font-bold text-stone-800">Navi<span className='text-orange-600'>que</span></Link>
+                    <Link href={"/"} className="text-2xl font-bold text-slate-800 dark:text-slate-50">Navi<span className='text-orange-600'>que</span></Link>
                 </div>
-                <div className="sm:flex items-center gap-5 hidden">
+                <div className="sm:flex items-center gap-8 hidden">
                     {
                         navList.map((item, index) => (
-                            <Link href={item.path} className='cursor-pointer font-semiboldbold text-stone-800' key={index}>{item.name}</Link>
+                            <Link href={item.path} className='cursor-pointer font-semiboldbold text-slate-800 dark:text-slate-50' key={index}>{item.name}</Link>
                         ))
                     }
+
+                    <div className='px-5 py-[11px] rounded-2xl bg-slate-200 dark:bg-slate-500 relative cursor-pointer' onClick={themeToggle}>
+                        <span className={`absolute top-1/2 -translate-y-1/2 transition-all duration-500 ${theme === "dark" ? "translate-x-[0]" : "-translate-x-[100%]" }`}>
+                            {
+                                theme === "dark" ? <FaSun /> : <FaMoon />  
+                            }
+                        </span>
+                    </div>
                 </div>
                 <div className={`block sm:hidden text-2xl`} onClick={() => setShowMobileNav(!showMobileNav)}>
                     {
