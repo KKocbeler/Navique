@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import MobileNavMenu from './MobileNavMenu'
 import { IoCloseOutline } from 'react-icons/io5'
-import { FaMoon, FaSun } from 'react-icons/fa'
+import Theme from '../Theme/Theme'
 
 const navList = [
     {path: "#home", name: "Home"},
@@ -69,21 +69,14 @@ const Navbar = () => {
                             <Link href={item.path} className='cursor-pointer font-semiboldbold text-slate-800 dark:text-slate-50' key={index}>{item.name}</Link>
                         ))
                     }
-
-                    <div className='px-5 py-[11px] rounded-2xl bg-slate-200 dark:bg-slate-500 relative cursor-pointer' onClick={themeToggle}>
-                        <span className={`absolute top-1/2 -translate-y-1/2 transition-all duration-500 ${theme === "dark" ? "translate-x-[0]" : "-translate-x-[100%]" }`}>
-                            {
-                                theme === "dark" ? <FaSun /> : <FaMoon />  
-                            }
-                        </span>
-                    </div>
+                    <Theme theme={theme} themeToggle={themeToggle}/>
                 </div>
-                <div className={`block sm:hidden text-2xl`} onClick={() => setShowMobileNav(!showMobileNav)}>
+                <div className={`block sm:hidden text-2xl `} onClick={() => setShowMobileNav(!showMobileNav)}>
                     {
-                        showMobileNav ?  <IoCloseOutline /> : <RxHamburgerMenu/>
+                        showMobileNav ?  <IoCloseOutline className='dark:text-orange-600'/> : <RxHamburgerMenu className='dark:text-orange-600'/>
                     }
                 </div>
-                <MobileNavMenu showMobileNav={showMobileNav} setShowMobileNav={setShowMobileNav}/>
+                <MobileNavMenu showMobileNav={showMobileNav} setShowMobileNav={setShowMobileNav} theme={theme} themeToggle={themeToggle}/>
             </div>
         </div>
     </nav>
