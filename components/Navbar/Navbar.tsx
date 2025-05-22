@@ -17,9 +17,14 @@ const Navbar = () => {
     const [showMobileNav, setShowMobileNav] = useState(false)
     const lastScrollY = useRef(0)
 
-    const [theme, setTheme] = useState(() => {
-        return localStorage.getItem("theme") || "light";
-    });
+    const [theme, setTheme] = useState<"light" | "dark">("light");
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            const savedTheme = localStorage.getItem("theme");
+            setTheme(savedTheme === "dark" ? "dark" : "light")
+        }
+    }, [])
 
     useEffect(() => {
         localStorage.setItem("theme", theme)
