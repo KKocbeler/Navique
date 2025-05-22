@@ -1,4 +1,4 @@
-import { FaMoon, FaMobileAlt, FaRocket, FaRandom, FaClock, FaSlidersH } from "react-icons/fa";
+import { FaMoon, FaMobileAlt, FaRocket, FaSlidersH } from "react-icons/fa";
 
 export default function Features() {
   const features = [
