@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 import { IoIosArrowDown } from 'react-icons/io'
+import Theme from '../Theme/Theme';
 
 const quizzes = [
   {
@@ -34,9 +35,11 @@ const quizzes = [
 interface PropTypes {
     showMobileNav: boolean
     setShowMobileNav: (value: boolean) => void
+    theme: string;
+    themeToggle: () => void
 }
 
-const MobileNavMenu: React.FC<PropTypes> = ({showMobileNav, setShowMobileNav}) => {
+const MobileNavMenu: React.FC<PropTypes> = ({showMobileNav, setShowMobileNav, theme, themeToggle}) => {
 
 const [selectedIndex, setSelectedIndex] = useState<null | number>(null)
 
@@ -60,13 +63,17 @@ useEffect(() => {
 }, [setShowMobileNav])
         
   return (
-    <div className={`fixed z-10 top-[80px] right-0 bg-stone-100 inset-0 h-[100vh] px-2 sm:hidden transition-all duration-500 ${showMobileNav ? "translate-x-0" : "translate-x-full"}`}>
+    <div className={`fixed z-10 top-[80px] right-0 bg-slate-50 dark:bg-slate-900 inset-0 h-[100vh] px-2 sm:hidden transition-all duration-500 ${showMobileNav ? "translate-x-0" : "translate-x-full"}`}>
+      <div className='flex justify-end relative mt-4 px-3'>
+        <Theme theme={theme} themeToggle={themeToggle}/>
+      </div>
+        
         {quizzes.map((item, index) => (
             <div className="px-4 py-3 " key={index}>
                 <button className="w-full flex items-center justify-between text-left" onClick={() => toggleMenu(index)}>
-                    <span className="text-base text-stone-950 font-medium">{item.name}</span>
+                    <span className="text-base text-slate-950 dark:text-slate-50 font-medium">{item.name}</span>
                     <IoIosArrowDown
-                        className={`transition-transform duration-300 text-stone-900 ${selectedIndex === index ? 'rotate-180' : ''}`}
+                        className={`transition-transform duration-300 text-slate-900 dark:text-slate-50 ${selectedIndex === index ? 'rotate-180' : ''}`}
                     />
                 </button>
                 <ul
@@ -77,8 +84,8 @@ useEffect(() => {
                 }`}
                 >
                 {item.categories.map((category, i) => (
-                    <li key={i} className="py-2 pl-4 text-sm text-stone-600">
-                    <Link href={category.href} className="hover:text-stone-950 transition" onClick={() => setShowMobileNav(false)}>
+                    <li key={i} className="py-2 pl-4 text-sm text-slate-600 dark:text-slate-500">
+                    <Link href={category.href} className="hover:text-slate-950 dark:hover:text-slate-100 transition" onClick={() => setShowMobileNav(false)}>
                         {category.label}
                     </Link>
                     </li>
