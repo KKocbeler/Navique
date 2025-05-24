@@ -31,8 +31,8 @@ const QuizResults: React.FC<PropsType> = ({correctCount, qLength, restartQuiz}) 
         return {message, resultBg};
     }
 
-    const resultMessage = resultEvaluation().message;
-    const resultBg = resultEvaluation().resultBg;
+    const { message: resultMessage, resultBg} = resultEvaluation();
+
   return (
     <motion.div 
     className='flex justify-center'
@@ -49,14 +49,14 @@ const QuizResults: React.FC<PropsType> = ({correctCount, qLength, restartQuiz}) 
             </div>
             <motion.div
                 className='flex items-center justify-center rounded font-semibold'
-                initial={{ opacity: 0, scale: 0.9, height: 0}}
-                whileInView={{ opacity: 1, scale: 1, height: 50, color: resultBg}}
+                initial={{ opacity: 0, scale: 0.9, minHeight: 0}}
+                animate={{ opacity: 1, scale: 1, minHeight: 50, color: resultBg}}
                 transition={{ duration: 0.4, delay: 1.5 }}
             >
                 {resultMessage}
             </motion.div>
             <div className="flex justify-center gap-4 mt-4">
-                <button className="bg-slate-200 hover:bg-slate-100 text-slate-800 font-medium py-2 px-4 rounded" onClick={restartQuiz}>Restart Quiz</button>
+                <button type='button' className="bg-slate-200 hover:bg-slate-100 text-slate-800 font-medium py-2 px-4 rounded" onClick={restartQuiz}>Restart Quiz</button>
                 <Link href="/" className="border border-slate-700 bg-slate-700 hover:bg-slate-600 text-gray-50 font-medium py-2 px-4 rounded">Home</Link>
             </div>
         </div>
