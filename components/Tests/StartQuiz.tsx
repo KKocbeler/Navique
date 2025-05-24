@@ -26,13 +26,15 @@ const StartQuiz: React.FC<PropsType> = ({temporaryDifficulty, setTemporaryDiffic
             <div className='font-bold mb-3'>Difficulty</div>
             <div className='flex justify-center items-center gap-2'>
                 {difficulties.map((item, j) => (
-                    <span 
+                    <button
+                    type='button'
                     key={j}
                     className={`cursor-pointer py-1 px-2 rounded transition ${item.toLowerCase() === temporaryDifficulty ? "bg-slate-700 text-white" : "hover:bg-slate-200 dark:hover:bg-slate-600"}`}
                     onClick={() => setTemporaryDifficulty(item.toLowerCase())}
+                    aria-pressed={item.toLowerCase() === temporaryDifficulty}
                     >
                     {item}
-                    </span>
+                    </button>
                 ))}
             </div>
         </div>
@@ -40,18 +42,20 @@ const StartQuiz: React.FC<PropsType> = ({temporaryDifficulty, setTemporaryDiffic
             <div className='font-bold mb-3'>How Many Questions?</div>
             <div className='flex items-center justify-center gap-2'>
                 {questionOptions.map((item, j) => (
-                    <span 
+                    <button 
                     key={j}
                     className={`cursor-pointer py-1 px-2 rounded transition ${item === temporaryQLength ? "bg-slate-700 text-white" : "hover:bg-slate-200 dark:hover:bg-slate-600"}`}
                     onClick={() => setTemporaryQLength(item)}
+                    aria-pressed={item === temporaryQLength}
                     >
                     {item}
-                    </span>
+                    </button>
                 ))}
             </div>
         </div>
         <div className="flex justify-center gap-4 mt-8">
-            <button 
+            <button
+            type='button'
             className="bg-slate-800 hover:bg-slate-700 text-white font-medium py-2 px-4 rounded" 
             onClick={startQuiz}
             >
