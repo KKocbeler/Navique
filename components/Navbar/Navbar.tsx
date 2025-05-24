@@ -57,7 +57,7 @@ const Navbar = () => {
     }, [])
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 bg-slate-100 dark:bg-slate-950 ${showNavbar ? "translate-y-0" : "-translate-y-full"}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 bg-slate-100 dark:bg-slate-950 ${showNavbar ? "translate-y-0" : "-translate-y-full"}`} aria-label='Main navigation'>
         <div className="new-container">
             <div className='flex items-center justify-between h-[80px]'>
                 <div >

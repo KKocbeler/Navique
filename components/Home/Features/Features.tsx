@@ -25,7 +25,7 @@ export default function Features() {
   ];
 
   return (
-    <section id="features">
+    <section id="features" aria-label="Features section">
         <div className="text-center my-[150px]">
             <h2 className="text-3xl font-bold mb-10 text-slate-900 dark:text-white">Features</h2>
             <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
