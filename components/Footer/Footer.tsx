@@ -28,7 +28,7 @@ const Footer = () => {
                     <nav className='flex flex-1 justify-center gap-4 text-[20px] absolute bottom-[50px] left-1/2 -translate-x-1/2 sm:static sm:-translate-x-0 sm:left-0 sm:bottom-0'>
                         {
                             socialLinks.map((social, index) => (
-                                <Link 
+                                <a 
                                     href={social.url} 
                                     className='text-slate-300 hover:text-slate-100 transition'
                                     key={index} 
@@ -37,7 +37,7 @@ const Footer = () => {
                                     rel="noopener noreferrer"
                                 >
                                     {React.createElement(social.icon)}  
-                                </Link>
+                                </a>
                             ))
                         }
                     </nav>
