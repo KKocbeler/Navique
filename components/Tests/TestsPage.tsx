@@ -111,7 +111,7 @@ return (
             data.length === 0 ? (
                 <Loading />
             ) : (
-            questionIndex + 1 !== data.length ? (
+            questionIndex !== data.length ? (
                 <QuestionCard 
                     data={data} 
                     questionIndex={questionIndex} 
